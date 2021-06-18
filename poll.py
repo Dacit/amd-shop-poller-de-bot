@@ -20,6 +20,7 @@ class Poller:
         options = Options()
         options.headless = True
         options.add_argument(f'user-agent={Poller.user_agent}')
+        options.add_argument("--no-sandbox")
         chrome_path = chromedriver_autoinstaller.install()
         logger.info(f"Chrome at: {chrome_path}")
         self.browser = webdriver.Chrome(options=options)

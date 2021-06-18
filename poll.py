@@ -20,7 +20,8 @@ class Poller:
         options = Options()
         options.headless = True
         options.add_argument(f'user-agent={Poller.user_agent}')
-        chromedriver_autoinstaller.install()
+        chrome_path = chromedriver_autoinstaller.install()
+        logger.info(f"Chrome at: {chrome_path}")
         self.browser = webdriver.Chrome(options=options)
         self.browser.get(Poller.base_url + '/de/direct-buy/de')
         self.state = {}

@@ -33,7 +33,6 @@ class Bot:
 
     def poll(self, context: CallbackContext) -> None:
         logger.debug('Polling...')
-        global poller
         try:
             res = poller.poll()
         except Exception as e:
@@ -60,13 +59,9 @@ class Bot:
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('Usage: python bot.py <TOKEN> [<GECKO_PATH>]')
+        print('Usage: python bot.py <TOKEN>')
         exit(1)
     token = sys.argv[1]
-    global poller
-    if len(sys.argv) > 2:
-        poller = Poller(sys.argv[2])
-    else:
-        poller = Poller('geckodriver')
+    poller = Poller()
     logger.info('Starting...')
     Bot(token, poller)

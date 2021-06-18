@@ -4,6 +4,7 @@ import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+import geckodriver_autoinstaller
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -14,10 +15,11 @@ logger = logging.getLogger(__name__)
 class Poller:
     base_url = 'https://www.amd.com'
 
-    def __init__(self, executable_path='geckodriver'):
+    def __init__(self):
         options = Options()
         options.headless = True
-        self.browser = webdriver.Firefox(executable_path=executable_path, options=options)
+        geckodriver_autoinstaller.install()
+        self.browser = webdriver.Firefox(options=options)
         self.browser.get(Poller.base_url + '/de/direct-buy/de')
         self.state = {}
 
@@ -40,8 +42,4 @@ class Poller:
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Usage: python poll.py <GECKODRIVER_PATH>")
-        exit(1)
-    poller = Poller(sys.argv[1])
-    print(poller.poll())
+    print(Poller().poll())

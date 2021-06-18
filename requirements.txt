@@ -1,6 +1,4 @@
-bs4
-requests
-requests-html
-selenium
-cloudscraper
+beautifulsoup4 ~= 4.9
+selenium ~= 3.14
+geckodriver-autoinstaller == 0.1.0
 python-telegram-bot ~= 13.6

@@ -1,10 +1,9 @@
 import logging
-import sys
 
+import chromedriver_autoinstaller
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-import geckodriver_autoinstaller
+from selenium.webdriver.chrome.options import Options
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -14,12 +13,15 @@ logger = logging.getLogger(__name__)
 
 class Poller:
     base_url = 'https://www.amd.com'
+    user_agent =\
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
 
     def __init__(self):
         options = Options()
         options.headless = True
-        geckodriver_autoinstaller.install()
-        self.browser = webdriver.Firefox(options=options)
+        options.add_argument(f'user-agent={Poller.user_agent}')
+        chromedriver_autoinstaller.install()
+        self.browser = webdriver.Chrome(options=options)
         self.browser.get(Poller.base_url + '/de/direct-buy/de')
         self.state = {}
 

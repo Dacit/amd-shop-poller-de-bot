@@ -1,0 +1,6 @@
+bs4
+requests
+requests-html
+selenium
+cloudscraper
+python-telegram-bot ~= 13.6

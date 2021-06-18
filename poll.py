@@ -1,6 +1,5 @@
 import logging
 import sys
-from random import randint
 
 from bs4 import BeautifulSoup
 from selenium import webdriver

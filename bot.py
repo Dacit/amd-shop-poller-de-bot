@@ -6,10 +6,8 @@ from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandle
 
 from poll import Poller
 
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
-)
 logger = logging.getLogger('bot')
+logger.setLevel(logging.INFO)
 
 
 def help(update: Update, context: CallbackContext) -> None:

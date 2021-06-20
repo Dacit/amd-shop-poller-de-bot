@@ -1,4 +1,5 @@
 import logging
+import os
 import sys
 
 from telegram import Update
@@ -72,7 +73,7 @@ if __name__ == '__main__':
         exit(1)
     token = sys.argv[1]
     if len(sys.argv) > 2:
-        db = sys.argv[2]
+        db = os.path.join(sys.argv[2], 'bot.sqlite')
     else:
         db = 'bot.sqlite'
 

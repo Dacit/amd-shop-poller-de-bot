@@ -1,0 +1,11 @@
+FROM: selenium/standalone-firefox:89.0
+
+RUN apt update -y && apt install python3-pip -y
+
+COPY requirements.txt requirements.txt
+
+RUN pip3 install -r requirements.txt
+
+COPY *.py .
+
+CMD ["python3", "bot.py", "$TOKEN", "$DATA_DIR" ]

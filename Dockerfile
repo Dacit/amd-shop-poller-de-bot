@@ -6,7 +6,7 @@ RUN apt-get update -qqy && apt-get install python3-pip -qqy
 
 WORKDIR /bot
 
-ENV BO_DATA_DIR="/bot"
+ENV BOT_DATA_DIR="/bot"
 ENV BOT_TOKEN="changeme"
 
 COPY requirements.txt /bot

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  bot:
+    container_name: bot
+    build: amd-shop-poller-de-bot
+    environment:
+      - BOT_TOKEN
+    volumes:
+      - bot.data:/bot:Z
+
+volumes:
+  bot.data:
